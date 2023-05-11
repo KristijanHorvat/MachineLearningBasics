@@ -27,9 +27,12 @@ print("Broj prezivjelih zena: ", len(survived_female))
 postotak_p_z=len(survived_female)/len(female)*100
 print("postootak prezivjelih zena: ", postotak_p_z, "%")
 
-#plt.figure()
-
-#plt.show()
+plt.figure()
+values = {"postotak muskaraca prezivjelih":postotak_p_m, "postotak zena prezivjelih":postotak_p_z}
+values2 = list(values.values())
+courses = list(values.keys())
+plt.bar(courses, values2)
+plt.show()
 #prezivjelo je veci postotak zena, nego muskaraca jer su zene i djeca imale prioritet za camce
 
 #D)
