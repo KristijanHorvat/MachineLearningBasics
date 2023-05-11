@@ -18,11 +18,16 @@ data_df = data_df.dropna()
 
 data_df.drop_duplicates()
 data_df=data_df.reset_index(drop=True)
-data_df.loc[data_df.Sex=="male", "Sex"]=0
-data_df.loc[data_df.Sex=="female", "Sex"]=1
-data_df.loc[data_df.Embarked=="S", "Embarked"]=0
-data_df.loc[data_df.Embarked=="C", "Embarked"]=1
-data_df.loc[data_df.Embarked=="Q", "Embarked"]=2
+#data_df.loc[data_df.Sex=="male", "Sex"]=0
+#data_df.loc[data_df.Sex=="female", "Sex"]=1
+#data_df.loc[data_df.Embarked=="S", "Embarked"]=0
+#data_df.loc[data_df.Embarked=="C", "Embarked"]=1
+#data_df.loc[data_df.Embarked=="Q", "Embarked"]=2
+ohe = OneHotEncoder()
+X_encoded = ohe.fit_transform(data_df[["Sex"]]).toarray()
+X_enc = ohe.fit_transform(data_df[["Embarked"]]).toarray()
+data_df["Sex"]=X_encoded
+data_df["Embarked"] = X_enc
 print(len(data_df))
 
 X = data_df.drop(columns=["PassengerId", "Survived", "Name", "Age", "SibSp", "Parch", "Ticket", "Cabin"]).to_numpy()
