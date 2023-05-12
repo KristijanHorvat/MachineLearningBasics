@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 
 iris = datasets.load_iris()
 
-df= pd.DataFrame(data= np.c_[iris['data'], iris['target']],
-                 columns= iris['feature_names'] + ['target'])
+df= pd.DataFrame(data= np.c_[iris['data'], iris['target']], columns= iris['feature_names'] + ['target'])
 
 df['species'] = pd.Categorical.from_codes(iris.target, iris.target_names)
 print(df)

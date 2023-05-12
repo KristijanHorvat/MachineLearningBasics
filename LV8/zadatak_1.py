@@ -1,6 +1,6 @@
 import numpy as np
 from tensorflow import keras
-from tensorflow.keras import layers
+#from tensorflow.keras import layers
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import random
@@ -47,10 +47,10 @@ y_test_s = keras.utils.to_categorical(y_test, num_classes)
 
 # TODO: kreiraj model pomocu keras.Sequential(); prikazi njegovu strukturu
 model = keras.Sequential()
-model.add(layers.Input(shape =(784, )))
-model.add(layers.Dense(100, activation = "relu"))
-model.add(layers.Dense(50, activation = "relu"))
-model.add(layers.Dense(10, activation = "softmax"))
+model.add(keras.layers.Input(shape =(784, )))
+model.add(keras.layers.Dense(100, activation = "relu"))
+model.add(keras.layers.Dense(50, activation = "relu"))
+model.add(keras.layers.Dense(10, activation = "softmax"))
 
 model.summary()
 
@@ -58,7 +58,7 @@ model.summary()
 model.compile(loss = "categorical_crossentropy", optimizer ="adam", metrics = ["accuracy" ,])
 
 # TODO: provedi ucenje mreze
-history = model.fit(x_train_s, y_train_s,batch_size = 32 ,epochs = 10,validation_split = 0.1)
+history = model.fit(x_train_s, y_train_s,batch_size = 32 ,epochs = 5,validation_split = 0.1)
 
 
 # TODO: Prikazi test accuracy i matricu zabune
